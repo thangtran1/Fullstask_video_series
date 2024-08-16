@@ -14,15 +14,13 @@ let handleLogin = async (req, res) => {
     console.log(userData)
     // check email exist
     // compare password
-    // return userInfor
+    // return userInfo
     // access_token: JWT json web token
 
     return res.status(200).json({
         errCode: userData.errCode,
-        message: userData.message,
-
+        message: userData.errMessage,
         user: userData.user ? userData.user : {}
-
     })
 }
 
@@ -66,10 +64,34 @@ let handleDeleteUser = async (req, res) => {
     let message = await userService.deleteUser(req.body.id);
     return res.status(200).json(message);
 }
+
+let getAllCode = async (req, res) => {
+    try {
+
+        let data = await userService.getAllCodeService(req.query.type);
+        return res.status(200).json(data)
+
+        // setTimeout(async () => {
+        //     let data = await userService.getAllCodeService(req.query.type);
+        //     return res.status(200).json(data);
+        // }, 3000)
+        // 3000s để test chờ lấy data từ gender
+    } catch (e) {
+        console.log('Get All code error: ', e)
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error from sever'
+        })
+    }
+}
+
+
+
 module.exports = {
     handleLogin: handleLogin,
     handleGetAllUsers: handleGetAllUsers,
     handleCreateNewUser: handleCreateNewUser,
     handleEditUser: handleEditUser,
     handleDeleteUser: handleDeleteUser,
+    getAllCode: getAllCode,
 }

@@ -28,13 +28,13 @@ let handleUserLogin = (email, password) => {
                 // user already exist
                 let user = await db.User.findOne({
                     // lấy trường mong muốn
-                    attributes: ['email', 'roleId', 'password'],
+                    attributes: ['email', 'roleId', 'password', 'firstName', 'lastName'],
                     where: { email: email },
                     raw: true
                 });
                 if (user) {
                     // compare password
-                    let check = await bcrypt.compareSync(password, user.password); //false 
+                    let check = bcrypt.compareSync(password, user.password); //false 
                     if (check) {
                         userData.errCode = 0;
                         userData.errMessage = 'ok';
@@ -42,26 +42,69 @@ let handleUserLogin = (email, password) => {
                         userData.user = user;
                     } else {
                         userData.errCode = 3;
-                        userData.errMessage = 'wrong password';
+                        userData.errMessage = 'Wrong password';
                     }
                 } else {
                     userData.errCode = 2;
-                    userData.errMessage = `User's not found`
+                    userData.errMessage = `User's not found`;
                 }
             } else {
                 // return error
                 userData.errCode = 1;
-                userData.errMessage = `Your's Email isn't exist in your system. Please try other Email !!!`
+                userData.errMessage = `Your Email isn't exist in your system. Please try other Email !!!`;
 
             }
-            resolve(userData)
+            resolve(userData);
         } catch (e) {
             reject(e);
         }
 
-    })
-
+    });
 }
+
+// let handleUserLogin = (email, password) => {
+//     return new Promise(async (resolve, reject) => {
+//         try {
+//             let userData = {};
+//             let isExist = await checkUserEmail(email);
+
+//             if (isExist) {
+//                 // user already exist
+//                 let user = await db.User.findOne({
+//                     // lấy trường mong muốn
+//                     attributes: ['email', 'roleId', 'password', 'firstName', 'lastName'],
+//                     where: { email: email },
+//                     raw: true
+//                 });
+//                 if (user) {
+//                     // compare password
+//                     let check = bcrypt.compareSync(password, user.password); //false 
+//                     if (check) {
+//                         userData.errCode = 0;
+//                         userData.errMessage = 'ok';
+//                         delete user.password; // xóa password đi
+//                         userData.user = user;
+//                     } else {
+//                         userData.errCode = 3;
+//                         userData.errMessage = 'Wrong password';
+//                     }
+//                 } else {
+//                     userData.errCode = 2;
+//                     userData.errMessage = `User's not found`;
+//                 }
+//             } else {
+//                 // return error
+//                 userData.errCode = 1;
+//                 userData.errMessage = `Your Email isn't exist in your system. Please try other Email !!!`;
+
+//             }
+//             resolve(userData);
+//         } catch (e) {
+//             reject(e);
+//         }
+
+//     });
+// }
 
 
 let checkUserEmail = (userEmail) => {
@@ -128,8 +171,10 @@ let createNewUser = (data) => {
                     lastName: data.lastName,
                     address: data.address,
                     phoneNumber: data.phoneNumber,
-                    gender: data.gender === '1' ? true : false,
+                    gender: data.gender,
                     roleId: data.roleId,
+                    positionId: data.positionId,
+                    image: data.avater
                 })
 
                 resolve({
@@ -170,7 +215,7 @@ let deleteUser = (userId) => {
 let updateUserData = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!data.id) {
+            if (!data.id || !data.positionId || !data.gender) {
 
                 return resolve({
                     errCode: 2,
@@ -185,6 +230,14 @@ let updateUserData = (data) => {
                 user.firstName = data.firstName;
                 user.lastName = data.lastName;
                 user.address = data.address;
+                user.roleId = data.roleId;
+                user.positionId = data.positionId;
+                user.gender = data.gender;
+                user.phoneNumber = data.phoneNumber;
+
+                if (data.avater) {
+                    user.image = data.avater;
+                }
 
                 await user.save();
 
@@ -204,10 +257,36 @@ let updateUserData = (data) => {
         }
     })
 }
+let getAllCodeService = (typeInput) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!typeInput) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing requied parameters !'
+                })
+            } else {
+                let res = {};
+                let allcode = await db.Allcode.findAll({
+                    where: { type: typeInput }
+                });
+                res.errCode = 0;
+                res.data = allcode;
+                resolve(res);
+            }
+
+
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers: getAllUsers,
     createNewUser: createNewUser,
     deleteUser: deleteUser,
     updateUserData: updateUserData,
+    getAllCodeService: getAllCodeService,
 }

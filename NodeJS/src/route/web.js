@@ -1,6 +1,7 @@
 import express from "express";
-import homeController from "../controllers/homeController"
-import userController from "../controllers/userController"
+import homeController from "../controllers/homeController";
+import userController from "../controllers/userController";
+import docterController from '../controllers/docterController';
 let router = express.Router();
 
 let initWebRouer = (app) => {
@@ -21,7 +22,25 @@ let initWebRouer = (app) => {
     router.put('/api/edit-user', userController.handleEditUser);
     router.delete('/api/delete-user', userController.handleDeleteUser);
 
+
+    router.get('/api/allcode', userController.getAllCode);
+
+    router.get('/api/top-docter-home', docterController.getTopDocterHome);
+
+    router.get('/api/get-all-docter', docterController.getAllDocters);
+
+    router.post('/api/save-infor-docter', docterController.postInforDocter);
+
+    router.get('/api/get-detail-docter-by-id', docterController.getDetailDocterById);
+
+    router.post('/api/bulk-create-schedule', docterController.bulkCreateSchedule);
+
+    router.get('/api/get-schedule-docter-by-date', docterController.getScheduleByDate);
+
     return app.use("/", router);
 }
+// hai cái function này không phải redux hay react mà là thư viện và hàm sd trong thư viện là: (connect-react-redux);
+// mapStateToProps: map data từ trong redux tiêm vào prop (component props)
+// mapDispatchToProps: thông qua this.props.<tên action> 
 
 module.exports = initWebRouer;

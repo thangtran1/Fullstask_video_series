@@ -4,7 +4,7 @@ const {
     BOOLEAN
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class History extends Model {
+    class Markdown extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -12,17 +12,20 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            Markdown.belongsTo(models.User, { foreignKey: 'docterId' })
         }
     }
-    History.init({
-        patientId: DataTypes.INTEGER,
-        docterId: DataTypes.INTEGER,
+    Markdown.init({
+        contentHTML: DataTypes.TEXT('long'),
+        contentMarkdown: DataTypes.TEXT('long'),
         description: DataTypes.TEXT,
-        files: DataTypes.TEXT
+        docterId: DataTypes.INTEGER,
+        specialtyId: DataTypes.INTEGER,
+        clinicId: DataTypes.INTEGER
 
     }, {
         sequelize,
-        modelName: 'History',
+        modelName: 'Markdown',
     });
-    return History;
+    return Markdown;
 };
