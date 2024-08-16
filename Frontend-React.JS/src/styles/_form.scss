@@ -1,71 +1,73 @@
-@import "common";
+// @import "common";
 
-.custom-form-group {
+// .custom-form-group {
 
-  .custom-form-control {
-    background-color: $common-white;
-    border: 1px solid $border;
-    &.readonly {
-      cursor: not-allowed;
-      background-color: darken($common-white, 5);
-    }
-    &:focus {
-      outline: none;
-      border: 1px solid darken($border, 50);
-    }
-  }
+//     .custom-form-control {
+//         background-color: $common-white;
+//         border: 1px solid $border;
 
-  select.custom-form-control {
-    background-image: $dropdown-image;
-  }
+//         &.readonly {
+//             cursor: not-allowed;
+//             background-color: darken($common-white, 5);
+//         }
 
-  margin-bottom: 10px;
+//         &:focus {
+//             outline: none;
+//             border: 1px solid darken($border, 50);
+//         }
+//     }
 
-  label {
-    margin-bottom: 1px;
-  }
+//     select.custom-form-control {
+//         background-image: $dropdown-image;
+//     }
 
-  .custom-form-control {
-    display: block;
-    width: 100%;
-    height: 28px;
-    padding: 0 5px;
-    line-height: 26px;
-    border-radius: 5px;
-  }
+//     margin-bottom: 10px;
 
-  textarea.custom-form-control {
-    min-height: 28px;
-    height: auto;
-  }
+//     label {
+//         margin-bottom: 1px;
+//     }
 
-  select.custom-form-control {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+//     .custom-form-control {
+//         display: block;
+//         width: 100%;
+//         height: 28px;
+//         padding: 0 5px;
+//         line-height: 26px;
+//         border-radius: 5px;
+//     }
 
-    padding-right: 15px;
+//     textarea.custom-form-control {
+//         min-height: 28px;
+//         height: auto;
+//     }
 
-    background-position: right top;
-    background-repeat: no-repeat;
-    background-size: 15px 100%;
+//     select.custom-form-control {
+//         -webkit-appearance: none;
+//         -moz-appearance: none;
 
-    cursor: pointer;
+//         padding-right: 15px;
 
-    &:disabled {
-      cursor: not-allowed;
-    }
-  }
+//         background-position: right top;
+//         background-repeat: no-repeat;
+//         background-size: 15px 100%;
 
-  .custom-checkbox-control {
-    line-height: 28px;
+//         cursor: pointer;
 
-    input {
-      cursor: pointer;
-    }
+//         &:disabled {
+//             cursor: not-allowed;
+//         }
+//     }
 
-    label {
-      margin-left: 5px;
-    }
-  }
+//     .custom-checkbox-control {
+//         line-height: 28px;
 
-}
+//         input {
+//             cursor: pointer;
+//         }
+
+//         label {
+//             margin-left: 5px;
+//         }
+//     }
+
+// }

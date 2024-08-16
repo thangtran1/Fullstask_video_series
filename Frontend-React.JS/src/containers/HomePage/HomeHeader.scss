@@ -1,7 +1,11 @@
 .home-header-container {
     height: 60px;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000000;
+    background: white;
 
 
     .home-header-content {
@@ -11,16 +15,15 @@
 
         .left-content {
             align-items: center;
-            width: 25%;
+            width: 20%;
             display: flex;
-            border: 1px solid rgb(173, 162, 162);
 
             .header-logo {
-                background: url('../../assets/logo.png') center center no-repeat;
                 height: 100%;
                 width: 100%;
-                background-size: 200px 43px;
                 cursor: pointer;
+                transform: scale(0.5, 0.5);
+                margin-left: -45px;
             }
 
             i {
@@ -34,8 +37,7 @@
             align-items: center;
             justify-content: space-between;
             display: flex;
-            width: 50%;
-            border: 1px solid rgb(108, 222, 83);
+            width: 55%;
 
             .child-content {
                 .subs-title {
@@ -48,15 +50,63 @@
         .right-content {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
             width: 25%;
-            border: 1px solid rgb(149, 102, 235);
+
+            .support {
+                padding-right: 50px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                i {
+                    font-size: 15px;
+                    margin-right: 5px;
+                }
+            }
+
+            .language-vi {
+                opacity: 0.3;
+                cursor: pointer;
+
+                &.active {
+                    // =  class  active
+                    opacity: 1;
+
+                    span {
+                        color: blue;
+                    }
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+
+            .language-en {
+                opacity: 0.3;
+                margin: 0 10px;
+                cursor: pointer;
+
+                &.active {
+                    opacity: 1;
+
+                    // =  class  active
+                    span {
+                        color: blue;
+                    }
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
         }
     }
 }
 
 .home-header-banner {
-    background: url('../../assets/header-background.webp');
+    background-image: url('../../assets/header-background.webp');
     background-repeat: no-repeat;
     height: 545px;
     background-size: cover;
@@ -65,9 +115,9 @@
     flex-direction: column;
 
     .content-up {
+        background-image: linear-gradient(rgba(126, 126, 126, 0.25), rgba(255, 255, 255, 0.1));
         padding-top: 15px;
-        border: 1px solid red;
-        height: 50%;
+        height: 65%;
 
 
         .title1 {
@@ -112,9 +162,50 @@
     }
 
     .content-down {
-        border: 1px solid green;
-        height: 50%;
+        padding-bottom: 10px;
+        height: 35%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
 
-        .options {}
+
+        .options {
+            display: flex;
+            text-align: center;
+            gap: 50px;
+            justify-content: center;
+
+            .option-child {
+                width: 125px;
+
+                .icon-child {
+                    background: white;
+                    width: 40px;
+                    height: 40px;
+                    padding: 10px;
+                    border-radius: 50%;
+                    text-align: center;
+                    margin: 0 auto;
+
+                    i {
+                        color: #49bce2;
+                        font-size: 20px;
+
+                    }
+                }
+
+                .text-child {
+                    font-size: 17px;
+                    font-weight: 500;
+                    cursor: pointer;
+
+
+                    &:hover {
+                        color: #49bce2;
+                    }
+                }
+            }
+        }
     }
 }

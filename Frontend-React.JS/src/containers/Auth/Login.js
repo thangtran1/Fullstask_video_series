@@ -29,6 +29,14 @@ class Login extends Component {
             password: event.target.value
         });
     }
+    handleKeyDown = (event) => {
+        console.log('check event: ', event);
+
+        if (event.key === 'Enter' || event.keyCode === 13) {
+            this.handleLogin();
+
+        }
+    }
 
     handleLogin = async () => {
         this.setState({
@@ -37,14 +45,11 @@ class Login extends Component {
         try {
             let data = await handleLoginApi(this.state.username, this.state.password);
             if (data && data.errCode !== 0) {
-                console.log('lỗi mặc định ');
                 this.setState({
                     errMessage: data.message
                 });
             } if (data && data.errCode === 0) {
-                // console.log('lỗi mặc định 123123');
                 this.props.userLoginSuccess(data.user);
-                console.log('login succeeds');
             }
         } catch (error) {
             if (error.response) {
@@ -76,7 +81,7 @@ class Login extends Component {
                                 className='form-control'
                                 placeholder='Enter your username'
                                 value={this.state.username}
-                                onChange={this.handleOnChangeUsername}
+                                onChange={(event) => this.handleOnChangeUsername(event)}
                             ></input>
                         </div>
                         <div className='col-12 form-group login-input'>
@@ -85,7 +90,8 @@ class Login extends Component {
                                 <input type={this.state.isShowPassword ? 'text' : 'password'}
                                     className='form-control'
                                     placeholder='Enter your password'
-                                    onChange={this.handleOnChangePassword}
+                                    onChange={(event) => this.handleOnChangePassword(event)}
+                                    onKeyDown={(event) => this.handleKeyDown(event)}
                                 ></input>
                                 <span onClick={this.handleShowHidePassword}>
                                     <i className={this.state.isShowPassword ? 'far fa-eye' : 'fa fa-eye-slash'}></i>

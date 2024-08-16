@@ -1,0 +1,252 @@
+// reset slick slider css
+.slick-prev {
+    z-index: 999;
+    left: -10px !important;
+    background: #fff !important;
+    border: 2px solid #d7d7d7 !important;
+
+    &:hover {
+        background: #ededed !important;
+    }
+
+}
+
+.slick-next {
+    z-index: 999;
+    background: #fff !important;
+    border: 2px solid #d7d7d7 !important;
+    right: -10px !important;
+
+    &:hover {
+        background: #ededed !important;
+    }
+}
+
+.slick-next::before,
+.slick-prev:before {
+    font-family: FontAwesome !important;
+    color: red !important;
+
+}
+
+.slick-prev,
+.slick-next {
+    height: 48px !important;
+    width: 44px !important;
+}
+
+.slick-disabled {
+    // ẩn khi click điểm đầu và cuối
+    display: none !important;
+}
+
+
+
+
+.section-share {
+    &.section-specialty {
+        background: #f5f5f5;
+    }
+
+    &.section-outStanding-docter {
+        background: #f5f5f5;
+    }
+
+    &.section-about {
+        height: 500px !important;
+        padding: 0 160px;
+    }
+
+
+
+    .specialty-body {
+
+        .section-customize {
+
+            .bg-image {
+                width: 278px;
+                height: 150px;
+                background-position: center center;
+                background-repeat: no-repeat !important;
+                background-size: cover;
+                background-color: #eee;
+
+                &.section-specialty {
+                    background-image: url('../../assets/specialty/heloo.jpeg');
+                }
+
+                &.section-medical-facility {
+                    background-image: url('../../assets/medical-facility/hospital-thu-cuc.jpg');
+                }
+
+                &.section-outstanding-docter {
+                    // background-image: url('../../assets/outstanding-docter/image-docter.jpg');
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                }
+
+                &.section-handBook {
+                    background-image: url('../../assets/hand-book/cẩm-nang.png');
+                }
+            }
+        }
+    }
+}
+
+.section-share {
+    height: 330px;
+
+
+    .specialty-container {
+        margin: 0 160px;
+        display: flex;
+        flex-direction: column;
+
+        .specialty-header {
+            height: 60px;
+            margin-bottom: 30px;
+            padding-top: 30px;
+
+            .title-specialty {
+                font-size: 23px;
+                font-weight: 600;
+            }
+
+            .btn-specialty {
+                color: black;
+                background: #ebebeb;
+                padding: 10px 15px;
+                border: none;
+                outline: none;
+                display: block;
+                float: right;
+                cursor: pointer;
+                text-transform: uppercase;
+
+                &:hover {
+                    color: white;
+                    background: #f7d800;
+                }
+            }
+        }
+
+
+    }
+
+}
+
+.section-outstanding-docter {
+
+    .outer-bg {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .section-customize {
+        cursor: pointer;
+        padding: 5px;
+
+        .customize-border {
+            padding: 20px;
+            border: 1px solid #eeeeee;
+        }
+    }
+}
+
+.home-footer {
+    text-align: center;
+    padding-top: 7px;
+
+    a {
+        text-decoration: none;
+    }
+
+
+}
+
+.section-about {
+    background-image: url('../../assets/about/bg-about.png');
+
+
+    .section-about-header {
+        padding: 20px 10px;
+        font-size: 22px;
+        font-weight: 600;
+
+    }
+
+    .section-about-content {
+        display: flex;
+        gap: 15px;
+
+        .content-right {
+            width: 50%;
+
+            p {
+                font-style: italic;
+                text-align: justify;
+                padding-top: 5px;
+            }
+
+            .right-img {
+
+                display: flex;
+                gap: 15px;
+
+                .float-left {
+                    padding: 10px;
+                    height: 100%;
+                    width: 50%;
+
+
+                    .img-left {
+                        border-radius: 7px;
+                        margin-bottom: 16px;
+                        display: flex;
+                        align-items: center;
+                        padding: 15px;
+                        background: white;
+                        justify-content: center;
+
+                        img {
+                            width: 121px;
+                            height: 25px;
+                        }
+                    }
+                }
+
+                .float-right {
+                    padding: 10px;
+                    height: 100%;
+                    width: 50%;
+
+                    .img-right {
+                        border-radius: 7px;
+                        margin-bottom: 16px;
+                        display: flex;
+                        align-items: center;
+                        padding: 15px;
+                        background: white;
+                        justify-content: center;
+
+                        img {
+                            width: 121px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .content-left {
+            width: 50%;
+
+            .rounded-iframe {
+                border-radius: 15px;
+            }
+        }
+    }
+}
