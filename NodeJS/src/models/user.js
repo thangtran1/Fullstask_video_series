@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsTo(models.Allcode, { foreignKey: 'positionId', targetKey: 'keyMap', as: 'positionData' });
       User.belongsTo(models.Allcode, { foreignKey: 'gender', targetKey: 'keyMap', as: 'genderData' });
       User.hasOne(models.Markdown, { foreignKey: 'docterId' })
+      User.hasOne(models.Docter_Infor, { foreignKey: 'docterId' })
+
+      User.hasMany(models.Schedule, { foreignKey: 'docterId', as: 'docterData' });
     }
   }
 

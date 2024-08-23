@@ -2,6 +2,9 @@ import express from "express";
 import homeController from "../controllers/homeController";
 import userController from "../controllers/userController";
 import docterController from '../controllers/docterController';
+import patientController from '../controllers/patientController';
+import specialtyController from '../controllers/specialtyController';
+import clinicController from '../controllers/clinicController';
 let router = express.Router();
 
 let initWebRouer = (app) => {
@@ -37,7 +40,33 @@ let initWebRouer = (app) => {
 
     router.get('/api/get-schedule-docter-by-date', docterController.getScheduleByDate);
 
+    router.get('/api/get-extra-infor-docter-by-id', docterController.getExtraInforByDate);
+
+    router.get('/api/get-profile-docter-by-id', docterController.getProfileDocterByDate);
+
+    router.post('/api/patient-book-appointment', patientController.postBookingAppointment);
+
+
+    router.post('/api/verify-book-appointment', patientController.postVerifyBookingAppointment);
+
+    router.post('/api/create-new-specialty', specialtyController.createSpecialty);
+
+    router.get('/api/get-all-specialty', specialtyController.getAllSpecialty);
+
+    router.get('/api/get-detail-specialty-by-id', specialtyController.getDetailSpecialtyById);
+
+    router.post('/api/create-new-clinic', clinicController.createClinic);
+
+    router.get('/api/get-clinic', clinicController.getAllClinic);
+    router.get('/api/get-detail-clinic-by-id', clinicController.getDetailClinicById);
     return app.use("/", router);
+
+
+
+
+
+
+
 }
 // hai cái function này không phải redux hay react mà là thư viện và hàm sd trong thư viện là: (connect-react-redux);
 // mapStateToProps: map data từ trong redux tiêm vào prop (component props)

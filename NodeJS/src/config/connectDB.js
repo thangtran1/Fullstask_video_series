@@ -10,7 +10,7 @@ const sequelize = new Sequelize('hoidanit', 'root', '', {
     //logging: để mất Executing (default): SELECT 1+1 AS result
 });
 
-// async bất đồng bộ
+
 let connectDB = async () => {
     try {
         await sequelize.authenticate();
