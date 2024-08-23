@@ -1,0 +1,31 @@
+.profile-docter-container {
+    .intro-docter {
+        display: flex;
+        gap: 15px;
+        padding-bottom: 5px;
+
+        .content-left {
+            width        : 80px;
+           background-repeat: no-repeat;
+           background-size: cover;
+           background-position: center;
+            height       : 80px;
+            border-radius: 50%;
+        }
+    
+        .content-right {
+            display       : flex;
+            flex-direction: column;
+            width         : calc(100% - 80px);
+            padding-left  : 10px;
+    
+            .up {
+                font-weight: 600;
+            }
+    
+            .down {
+                text-align: justify;
+            }
+        }
+    }
+}

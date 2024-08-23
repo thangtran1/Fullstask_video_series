@@ -56,7 +56,8 @@
     },
     "homepage": {
         "Outstanding-docter": "Last week's featured docter",
-        "more-infor": "more-infor"
+        "more-infor": "More infor",
+        "Popular-specialties": "Popular specialties"
     },
     "manage-schedule": {
         "title": "Manage your doctor's answers",
@@ -70,6 +71,31 @@
             "no-schedule": "The doctor does not have appointments during this time, please choose another time",
             "choose": "Choose",
             "book-free": "and book (free)"
+        },
+        "extra-infor-docter": {
+            "text-address": "Address of examination",
+            "price": "Examination price: ",
+            "detail": "See details",
+            "payment": "Patients can pay fees in form: ",
+            "hide-price": "Hide price list"
+        },
+        "booking-modal": {
+            "information": "Appointment Booking Information",
+            "fullName": "Fullname",
+            "phoneNumber": "Phone number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reason for medical examination",
+            "birthday": "Date of birth",
+            "sex": "Gender",
+            "btnConfirm": "Confirm",
+            "btnCancle": "Cancel",
+            "priceBooking": "Free Booking",
+            "price": "Price: "
+        },
+        "verify-email": {
+            "succeed": "Appointment confirmed successfully!",
+            "failed": "Appointment schedule does not exist or has been confirmed"
         }
     },
     "admin": {
@@ -84,7 +110,9 @@
             "province": "Province",
             "name-clinic": "Clinic's name",
             "address-clinic": "Clinic's address",
-            "note": "Note"
+            "note": "Note",
+            "specialty": "Specialty",
+            "select-clinic": "Clinic"
         }
     }
 }

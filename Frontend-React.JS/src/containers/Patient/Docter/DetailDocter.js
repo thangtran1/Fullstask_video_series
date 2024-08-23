@@ -5,6 +5,7 @@ import './DetailDocter.scss';
 import { getDetailInforDocter } from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
 import DocterSchedule from './DocterSchedule';
+import DocterExtraInfor from './DocterExtraInfor';
 class DetailDocter extends Component {
 
 
@@ -16,25 +17,20 @@ class DetailDocter extends Component {
 
         }
     }
-    componentDidMount() {
-        const fetchDoctorDetails = async () => {
-            if (this.props.match && this.props.match.params && this.props.match.params.id) {
-                let id = this.props.match.params.id;
+    async componentDidMount() {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id;
+            this.setState({
+                currentDocterId: id
+            });
+
+            let res = await getDetailInforDocter(id);
+            if (res && res.errCode === 0) {
                 this.setState({
-                    currentDocterId: id
-                })
-
-
-                let res = await getDetailInforDocter(id);
-                if (res && res.errCode === 0) {
-                    this.setState({
-                        detailDocter: res.data,
-                    })
-                }
+                    detailDocter: res.data,
+                });
             }
-        };
-
-        fetchDoctorDetails();
+        }
     }
 
     render() {
@@ -77,14 +73,13 @@ class DetailDocter extends Component {
                             />
                         </div>
                         <div className='content-right'>
-
+                            <DocterExtraInfor docterIdFromParent={this.state.currentDocterId} />
                         </div>
                     </div>
                     <div className='detail-infor-docter'>
                         {detailDocter && detailDocter.Markdown && detailDocter.Markdown.contentHTML
                             &&
-                            <div dangerouslySetInnerHTML=
-                                {{ __html: detailDocter.Markdown.contentHTML }} />
+                            <div dangerouslySetInnerHTML={{ __html: detailDocter.Markdown.contentHTML }} />
                         }
 
                     </div>
